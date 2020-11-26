@@ -1,0 +1,3 @@
+newmtl Burns_interior_1
+Kd 1 1 1
+map_Kd Burns_interior_e_bmp.png

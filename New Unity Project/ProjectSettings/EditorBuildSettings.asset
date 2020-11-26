@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/InitialMenu.unity
+    guid: 781637886c309f941acbe81a3291ec4a
+  - enabled: 1
+    path: Assets/MobileDepthWater/Scenes/Game.unity
+    guid: 56af498a20d7fb14ab9dd5bbde060f9d
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: c06af11a3a0b2464aa77ffa85985bd46
   m_configObjects: {}

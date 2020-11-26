@@ -29,18 +29,22 @@ public class WormMovement : MonoBehaviour
 
     private void MovementsInput()
     {
-        direction.z = Input.GetAxis("Horizontal");
-        direction.x = -1 * Input.GetAxis("Vertical");
+        direction.x = Input.GetAxis("Horizontal");
+        direction.z =  Input.GetAxis("Vertical");
 
         if(onFruit)
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                transform.parent = fruit.transform;
-                fruitRotation.isLocked = false;
-                fruitRotation.worm = this.gameObject;
+                if(!fruitRotation.end)
+                {
 
-                this.gameObject.SetActive(false);
+                    transform.parent = fruit.transform;
+                    fruitRotation.isLocked = false;
+                    fruitRotation.worm = this.gameObject;
+
+                    this.gameObject.SetActive(false);
+                }
             }
            
            
