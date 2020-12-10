@@ -19,7 +19,7 @@ public class Rotation : MonoBehaviour
 
     public Validation val;
 
-    public ArduinoInput arduino;
+    //public ArduinoInput arduino;
 
     private int sidel;
     private int sider;
@@ -139,7 +139,7 @@ public class Rotation : MonoBehaviour
                 worm.SetActive(true);
                 worm.transform.SetParent(null);
 
-                arduino.onFruit = false;
+                //arduino.onFruit = false;
 
             
 

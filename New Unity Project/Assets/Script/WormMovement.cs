@@ -11,7 +11,7 @@ public class WormMovement : MonoBehaviour
     private GameObject fruit;
     private Rotation fruitRotation;
 
-    public ArduinoInput arduino;
+    //public ArduinoInput arduino;
 
    
     private int sidel;
@@ -75,9 +75,9 @@ public class WormMovement : MonoBehaviour
             if (!fruitRotation.end)
             {
                 
-                arduino.onFruit = true;
-                arduino.fruit = fruitRotation;
-                fruitRotation.arduino = arduino;
+                //arduino.onFruit = true;
+                //arduino.fruit = fruitRotation;
+                //fruitRotation.arduino = arduino;
 
                 transform.parent = fruit.transform;
                 fruitRotation.isLocked = false;
