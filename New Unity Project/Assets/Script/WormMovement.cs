@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class WormMovement : MonoBehaviour
 {
-    private Vector3 direction;
+    public Vector3 direction;
     [SerializeField] private float vel;
 
     private bool onFruit;
     private GameObject fruit;
     private Rotation fruitRotation;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public ArduinoInput arduino;
+
+   
+    private int sidel;
+    private int sider;
+    
     void Update()
     {
-        MovementsInput();
+        //MovementsInput();
 
+        direction.x = sidel + sider;
 
-        transform.LookAt(transform.position + direction * Time.deltaTime * vel);
+        transform.LookAt(transform.position + direction * Time.deltaTime * vel );
+
         transform.position += direction * Time.deltaTime * vel;
+
+        //if (velPT > 0f)
+        //{
+            
+        //    transform.position += direction * Time.deltaTime * vel * velPT;
+        //}
+
+       
 
     }
 
@@ -43,14 +53,89 @@ public class WormMovement : MonoBehaviour
                     fruitRotation.isLocked = false;
                     fruitRotation.worm = this.gameObject;
 
+                    arduino.onFruit = true;
+                    arduino.fruit = fruitRotation;
+                    fruitRotation.arduino = arduino;
+
+
+
                     this.gameObject.SetActive(false);
                 }
             }
-           
-           
         }
-
     }
+
+    
+
+    public void ActionInput()
+    {
+        Debug.Log("a");
+        if (onFruit)
+        {
+            if (!fruitRotation.end)
+            {
+                
+                arduino.onFruit = true;
+                arduino.fruit = fruitRotation;
+                fruitRotation.arduino = arduino;
+
+                transform.parent = fruit.transform;
+                fruitRotation.isLocked = false;
+                fruitRotation.worm = this.gameObject;
+
+
+                
+
+                this.gameObject.SetActive(false);
+            }
+        }
+    }
+
+   
+
+    public void FowardAndBack(float backForw)
+    {
+        if(backForw > 0.6)
+        {
+            direction.z = 1;
+        }
+        else if (backForw < 0.4)
+        {
+            direction.z = -1;
+        }
+        else
+        {
+            direction.z = 0;
+        }
+    }
+
+    public void Left(bool state)
+    {
+        if(state)
+        {
+           
+                sidel = -1;
+          
+        }
+        else
+        {
+            sidel = 0;
+        }
+    }
+
+    public void Right(bool state)
+    {
+        if (state)
+        {
+            sider = 1;
+        }
+        else
+        {
+            sider = 0;
+        }
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
