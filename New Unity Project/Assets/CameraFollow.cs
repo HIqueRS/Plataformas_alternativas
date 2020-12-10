@@ -2,19 +2,34 @@
 
 public class CameraFollow : MonoBehaviour
 {
-
-    public Transform target;
-
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
-
-    void FixedUpdate()
+    //-----Privates variables-----\\
+    private Vector3 offset;
+    //-----Publics variables-----\\
+    [Header("Variables")]
+    public Transform player;
+    [Space]
+    //[Header("Position")]
+    public float camPosX;
+    public float camPosY;
+    public float camPosZ;
+    [Space]
+    [Header("Rotation")]
+    public float camRotationX;
+    public float camRotationY;
+    public float camRotationZ;
+    [Space]
+    [Range(0f, 10f)]
+    public float turnSpeed;
+    //-----Privates functions-----\\
+    private void Start()
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-
-        transform.LookAt(target);
+        offset = new Vector3(player.position.x + camPosX, player.position.y + camPosY, player.position.z + camPosZ);
+        transform.rotation = Quaternion.Euler(camRotationX, camRotationY, camRotationZ);
     }
-
+    private void Update()
+    {
+        offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * turnSpeed, Vector3.right) * offset;
+        transform.position = player.position + offset;
+        transform.LookAt(player.position);
+    }
 }
