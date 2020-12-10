@@ -50,7 +50,7 @@ public class Rotation : MonoBehaviour
         }
 
 
-        Debug.Log(direction);
+        //Debug.Log(direction);
         
     }
 
@@ -65,8 +65,8 @@ public class Rotation : MonoBehaviour
 
     private void MovementsInput()
     {
-        //direction.z = -1 * Input.GetAxis("Horizontal");
-        //direction.x = Input.GetAxis("Vertical");
+        direction.z = -1 * Input.GetAxis("Horizontal");
+        direction.x = Input.GetAxis("Vertical");
 
         if (!isLocked)
         {
@@ -77,7 +77,7 @@ public class Rotation : MonoBehaviour
                 worm.SetActive(true);
                 worm.transform.SetParent(null);
 
-                arduino.onFruit = false;
+                //arduino.onFruit = false;
                 
             }
 

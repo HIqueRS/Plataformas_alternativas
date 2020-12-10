@@ -19,9 +19,9 @@ public class WormMovement : MonoBehaviour
     
     void Update()
     {
-        //MovementsInput();
+        MovementsInput();
 
-        direction.x = sidel + sider;
+        //direction.x = sidel + sider;
 
         transform.LookAt(transform.position + direction * Time.deltaTime * vel );
 
@@ -53,9 +53,9 @@ public class WormMovement : MonoBehaviour
                     fruitRotation.isLocked = false;
                     fruitRotation.worm = this.gameObject;
 
-                    arduino.onFruit = true;
-                    arduino.fruit = fruitRotation;
-                    fruitRotation.arduino = arduino;
+                    //arduino.onFruit = true;
+                    //arduino.fruit = fruitRotation;
+                    //fruitRotation.arduino = arduino;
 
 
 
